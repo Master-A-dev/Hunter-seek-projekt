@@ -1,0 +1,8 @@
+lav projekt med class 2 subclass til hunter seek funktion
+cirkel med detection radius
+custom behavir
+seek når sulten
+ikke bevidst om alt kun rundt om
+balancing shunter og pry med fart etc
+hver deres behavior
+en metode så de ikke jæger hele tiden aka sult
