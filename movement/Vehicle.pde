@@ -3,9 +3,10 @@ abstract class Vehicle {
   PVector position;
   PVector acc;
   PVector vel;
+  PVector desired;
   float maxspeed;
   float maxforce;
-  float r;
+  float s;
 
 
 
@@ -18,6 +19,7 @@ void update() {
 
 
   void seek(Vehicle target) {}
+  void move(){}
   
   
   void applyForce(PVector force) {
@@ -26,7 +28,8 @@ void update() {
   
   void movement(){}
   
-  
-   void display() {}
+  void display() {}
+   
+  void wander(){}
   
 }

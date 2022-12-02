@@ -4,7 +4,7 @@ class hunter extends Vehicle{
     position = _p;
     acc = new PVector(0, 0);
     vel = new PVector(0, 0);
-    r = 3.0;
+    s = 3.0;
     maxforce = 0.3;
     maxspeed = 6;
   }
@@ -13,7 +13,7 @@ class hunter extends Vehicle{
   position = _p;
     acc = new PVector(0, 0);
     vel = new PVector(0, 0);
-    r = 3.0;
+    s = 3.0;
     maxforce = 0.1;
     maxspeed = _maxspeed;
   }

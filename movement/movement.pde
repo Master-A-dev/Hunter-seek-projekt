@@ -14,7 +14,7 @@ imageMode(CENTER);
 
 
 hunter = new hunter(new PVector(random(1,1940),random(1,1080)));
-prey = new prey(new PVector(random(1,1940),random(1,1080)));
+prey = new prey(new PVector(random(width),random(height)), 6, 0.6);
 }
 
 
@@ -27,7 +27,7 @@ hunter.seek(prey);
 hunter.update();
 hunter.display();
 
-//prey.seek();
+prey.move();
 prey.display();
 prey.update();
 }
