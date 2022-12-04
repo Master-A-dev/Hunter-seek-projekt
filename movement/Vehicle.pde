@@ -1,12 +1,17 @@
 abstract class Vehicle {
 
-  PVector position;
-  PVector acc;
-  PVector vel;
-  PVector desired;
-  float maxspeed;
-  float maxforce;
-  float s;
+  PVector position; 
+  PVector acc; 
+  PVector vel; 
+  PVector desired; 
+  float maxspeed; 
+  float oldspeed; 
+  float maxforce; 
+  float size; 
+  float range;
+  int timer;
+  int count;
+  
 
 
 
@@ -18,18 +23,19 @@ void update() {
   }
 
 
-  void seek(Vehicle target) {}
-  void move(){}
-  
+  void seek(Vehicle _target) {}
+  void move(Vehicle _target){}
+  void flee(Vehicle _target) {}
+  void display() {}
+  void wander(){}
   
   void applyForce(PVector force) {
     acc.add(force);
   }
+ 
   
-  void movement(){}
-  
-  void display() {}
+
    
-  void wander(){}
+  
   
 }

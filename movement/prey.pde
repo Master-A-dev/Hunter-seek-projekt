@@ -1,17 +1,22 @@
 class prey extends Vehicle{
 
   
-  prey(PVector _p,float _maxspeed, float _maxforce){
-  position = _p;
+  prey(PVector _p,float _maxspeed, float _maxforce, float _range){
+    position = _p;
     acc = new PVector(0, 0);
     vel = new PVector(0, 0);
-    s = 3;
+    size = 3;
     maxforce = _maxforce;
     maxspeed = _maxspeed;
+    oldspeed = _maxspeed;
+    range = _range;
     desired = new PVector(width/2, height/2);
+    timer = millis();
+    count = 5000;
+    
   }
-  void move(){
- 
+  
+  void move(Vehicle _target){
 
     if ((position.x > width) || (position.x < 0)) {  //border on x
       vel.x = vel.x * -1;
@@ -21,12 +26,31 @@ class prey extends Vehicle{
       vel.y = vel.y * -1;
       desired.y *= -1;
     }
+    else if (dist(position.x, position.y, _target.position.x, _target.position.y) < range) { //Starts the fleeing behavior
+      flee(_target);
+      maxspeed *= 1.1; //Makes the pray move faster when it flees
+    } 
+     else if (millis() - timer > count) {   //starts the animals wandering behavior 
+      wander();
+      timer = millis();
+    }
     else
     wander();
+    
+   if (dist(position.x, position.y, _target.position.x, _target.position.y) > _target.range*2) { // makes so the prey stop running fast when the hunter is not there
+     maxspeed = oldspeed;
+     
+    }
   
  PVector steer = PVector.sub(desired, vel);  //makes the animal move
     steer.limit(maxforce);
     applyForce(steer);
+  }
+  
+  void flee(Vehicle _target) {
+    desired = PVector.sub(_target.position, position).mult(-1);
+    desired.normalize();
+    desired.mult(maxspeed);
   }
   
   void wander() {    //makes the target move to a new point via polar vectors
@@ -49,9 +73,9 @@ class prey extends Vehicle{
     translate(position.x,position.y);
     rotate(theta);
     beginShape();
-    vertex(0, -s*4);
-    vertex(-s*2, s*4);
-    vertex(s*2, s*4);
+    vertex(0, -size*4);
+    vertex(-size*2, size*4);
+    vertex(size*2, size*4);
     endShape(CLOSE);
     popMatrix(); 
   }

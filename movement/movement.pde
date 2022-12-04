@@ -6,15 +6,16 @@ Vehicle hunter;
 
 void setup(){
   frameRate(60);
-fullScreen();
+//fullScreen();
+size(640, 480);
 
 pic = loadImage("bunga.png");
 pic.resize(98,110);
 imageMode(CENTER);
 
 
-hunter = new hunter(new PVector(random(1,1940),random(1,1080)));
-prey = new prey(new PVector(random(width),random(height)), 6, 0.6);
+hunter = new hunter(new PVector(random(1, 640),random(1, 480)), 6, 0.6, 200);
+prey = new prey(new PVector(random(1, 640),random(1, 480)), 6, 0.6, 100);
 }
 
 
@@ -23,11 +24,12 @@ prey = new prey(new PVector(random(width),random(height)), 6, 0.6);
 void draw(){
 background(0);
 
+hunter.move(prey);
 hunter.seek(prey);
 hunter.update();
 hunter.display();
 
-prey.move();
+prey.move(hunter);
 prey.display();
 prey.update();
 }
