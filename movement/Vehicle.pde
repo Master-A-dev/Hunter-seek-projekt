@@ -10,7 +10,7 @@ abstract class Vehicle {
   float size; 
   float range;
   int timer;
-  int count;
+  int counter;
   
 
 

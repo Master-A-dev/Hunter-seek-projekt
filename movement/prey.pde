@@ -12,7 +12,7 @@ class prey extends Vehicle{
     range = _range;
     desired = new PVector(width/2, height/2);
     timer = millis();
-    count = 5000;
+    counter = 500;
     
   }
   
@@ -28,14 +28,13 @@ class prey extends Vehicle{
     }
     else if (dist(position.x, position.y, _target.position.x, _target.position.y) < range) { //Starts the fleeing behavior
       flee(_target);
-      maxspeed *= 1.1; //Makes the pray move faster when it flees
+      maxspeed *= 1.01; //Makes the pray move faster when it flees
     } 
-     else if (millis() - timer > count) {   //starts the animals wandering behavior 
+     else if (millis() - timer > counter) {   //starts the animals wandering behavior 
       wander();
       timer = millis();
     }
-    else
-    wander();
+   
     
    if (dist(position.x, position.y, _target.position.x, _target.position.y) > _target.range*2) { // makes so the prey stop running fast when the hunter is not there
      maxspeed = oldspeed;
