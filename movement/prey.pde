@@ -26,17 +26,17 @@ class prey extends Vehicle{
       vel.y = vel.y * -1;
       desired.y *= -1;
     }
-    else if (dist(position.x, position.y, _target.position.x, _target.position.y) < range) { //Starts the fleeing behavior
+    else if (dist(position.x, position.y, _target.position.x, _target.position.y) < range) { 
       flee(_target);
-      maxspeed *= 1.01; //Makes the pray move faster when it flees
+      maxspeed *= 1.1; 
     } 
-     else if (millis() - timer > counter) {   //starts the animals wandering behavior 
+     else if (millis() - timer > counter) {   
       wander();
       timer = millis();
     }
    
     
-   if (dist(position.x, position.y, _target.position.x, _target.position.y) > _target.range*2) { // makes so the prey stop running fast when the hunter is not there
+   if (dist(position.x, position.y, _target.position.x, _target.position.y) > _target.range*2) { 
      maxspeed = oldspeed;
      
     }
