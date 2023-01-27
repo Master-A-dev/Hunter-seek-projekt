@@ -14,7 +14,7 @@ pic.resize(98,110);
 imageMode(CENTER);
 
 
-hunter = new hunter(new PVector(random(width),random(height)), 6, 0.6, 200);
+hunter = new hunter(new PVector(random(width),random(height)), 6, 0.6, 300);
 prey = new prey(new PVector(random(width),random(height)), 6, 0.6, 100);
 }
 

@@ -28,7 +28,7 @@ class prey extends Vehicle{
     }
     else if (dist(position.x, position.y, _target.position.x, _target.position.y) < range) { //Starts the fleeing behavior
       flee(_target);
-      maxspeed *= 1.01; //Makes the pray move faster when it flees
+      maxspeed *= 1.06; //Makes the pray move faster when it flees
     } 
      else if (millis() - timer > counter) {   //starts the animals wandering behavior 
       wander();
